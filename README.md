@@ -238,6 +238,11 @@ To play sound in the background, make sure to add the following to the `Info.pli
 
 ### `enableInSilenceMode(enabled)`
 `enabled` {boolean} Whether to enable playback in silence mode (iOS only).
+`mixing` {?boolean} Optionally enable mixing with other sounds on the device. Default is false.
+By default this component is in `ambient` mode, meaning it allows mixing and sound does not play
+in silence mode. When silence mode is enabled with this function, it switches to `Playback` mode,
+which does *not* allow mixing. Pass this parameter as true to enable mixing again.
+
 
 ## Notes
 - To minimize playback delay, you may want to preload a sound file without calling `play()` (e.g. `var s = new Sound(...);`) during app initialization. This also helps avoid a race condition where `play()` may be called before loading of the sound is complete, which results in no sound but no error because loading is still being processed.

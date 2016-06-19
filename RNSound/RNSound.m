@@ -83,9 +83,11 @@ RCT_EXPORT_METHOD(setCategory:(nonnull NSNumber*)key withValue:(NSString*)catego
   }
 }
 
-RCT_EXPORT_METHOD(enableInSilenceMode:(BOOL)enabled) {
+RCT_EXPORT_METHOD(enableInSilenceMode:(BOOL)enabled mixing:(BOOL)mixing) {
   AVAudioSession *session = [AVAudioSession sharedInstance];
-  [session setCategory: AVAudioSessionCategoryPlayback error: nil];
+  [session setCategory: AVAudioSessionCategoryPlayback 
+           withOptions: ((mixing) ? AVAudioSessionCategoryOptionMixWithOthers : 0)
+                 error: nil];
   [session setActive: enabled error: nil];
 }
 

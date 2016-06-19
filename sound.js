@@ -150,9 +150,9 @@ Sound.enable = function(enabled) {
   RNSound.enable(enabled);
 };
 
-Sound.enableInSilenceMode = function(enabled) {
+Sound.enableInSilenceMode = function(enabled, mixing = false) {
   if (!IsAndroid) {
-    RNSound.enableInSilenceMode(enabled);
+    RNSound.enableInSilenceMode(enabled, mixing);
   }
 };
 
